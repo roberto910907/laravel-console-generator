@@ -1,0 +1,67 @@
+{
+    "name": "roberto910907/laravel-console-generator",
+    "description": "Generates Laravel models and migrations using the command line",
+    "keywords": [
+        "roberto910907",
+        "laravel",
+        "laravel-console-generator"
+    ],
+    "homepage": "https://github.com/roberto910907/laravel-console-generator",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roberto Rielo",
+            "email": "roberto910907@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "spatie/laravel-package-tools": "^1.13.0",
+        "illuminate/contracts": "^9.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/termwind": "^1.14",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ConsoleGenerator\\ConsoleGenerator\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ConsoleGenerator\\ConsoleGenerator\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ConsoleGenerator\\ConsoleGenerator\\ConsoleGeneratorServiceProvider"
+            ],
+            "aliases": {
+                "ConsoleGenerator": "ConsoleGenerator\\ConsoleGenerator\\Facades\\ConsoleGenerator"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
