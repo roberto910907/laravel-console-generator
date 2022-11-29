@@ -1,10 +1,10 @@
 <?php
 
-namespace ConsoleGenerator\ConsoleGenerator;
+namespace ConsoleGenerator;
 
 use Spatie\LaravelPackageTools\Package;
+use ConsoleGenerator\Commands\ModelMakeCommand;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use ConsoleGenerator\ConsoleGenerator\Commands\ModelMakeCommand;
 
 class ConsoleGeneratorServiceProvider extends PackageServiceProvider
 {

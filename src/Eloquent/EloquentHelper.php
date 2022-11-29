@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace ConsoleGenerator\ConsoleGenerator\Eloquent;
+namespace ConsoleGenerator\Eloquent;
 
 use Illuminate\Support\Facades\File;
 use Symfony\Component\Finder\SplFileInfo;

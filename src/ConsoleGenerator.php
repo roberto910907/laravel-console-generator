@@ -1,6 +1,6 @@
 <?php
 
-namespace ConsoleGenerator\ConsoleGenerator;
+namespace ConsoleGenerator;
 
 class ConsoleGenerator
 {

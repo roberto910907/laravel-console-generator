@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "ConsoleGenerator\\ConsoleGenerator\\": "src"
+            "ConsoleGenerator\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ConsoleGenerator\\ConsoleGenerator\\Tests\\": "tests"
+            "ConsoleGenerator\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -56,10 +56,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ConsoleGenerator\\ConsoleGenerator\\ConsoleGeneratorServiceProvider"
+                "ConsoleGenerator\\ConsoleGeneratorServiceProvider"
             ],
             "aliases": {
-                "ConsoleGenerator": "ConsoleGenerator\\ConsoleGenerator\\Facades\\ConsoleGenerator"
+                "ConsoleGenerator": "ConsoleGenerator\\Facades\\ConsoleGenerator"
             }
         }
     },

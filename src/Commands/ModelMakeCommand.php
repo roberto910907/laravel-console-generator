@@ -1,11 +1,14 @@
 <?php
 
-namespace ConsoleGenerator\ConsoleGenerator\Commands;
+namespace ConsoleGenerator\Commands;
 
+use ConsoleGenerator\Util\ModelClassDetails;
+use Exception;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Console\GeneratorCommand;
+use ConsoleGenerator\Eloquent\EloquentHelper;
 use Symfony\Component\Console\Input\InputOption;
-use ConsoleGenerator\ConsoleGenerator\Eloquent\EloquentHelper;
+use ConsoleGenerator\Eloquent\ModelClassGenerator;
 
 class ModelMakeCommand extends GeneratorCommand
 {
@@ -13,29 +16,40 @@ class ModelMakeCommand extends GeneratorCommand
 
     public $description = 'Generates a model class using the command line';
 
-    protected EloquentHelper $eloquentHelper;
-
     /**
-     * @param Filesystem $files
+     * @param Filesystem $filesystem
      * @param EloquentHelper $eloquentHelper
+     * @param ModelClassGenerator $modelClassGenerator
      */
-    public function __construct(Filesystem $files, EloquentHelper $eloquentHelper)
-    {
-        $this->eloquentHelper = $eloquentHelper;
-
-        parent::__construct($files);
+    public function __construct(
+        protected Filesystem          $filesystem,
+        protected EloquentHelper      $eloquentHelper,
+        protected ModelClassGenerator $modelClassGenerator
+    ) {
+        parent::__construct($filesystem);
     }
 
     /**
+     * @throws Exception
+     *
      * @return int
      */
     public function handle(): int
     {
         $modelName = $this->getModelName();
+        $qualifyClass = $this->qualifyClass($modelName);
 
-        $path = $this->getPath($this->qualifyClass($modelName));
+        $modelClassDetails = new ModelClassDetails($modelName, $this->getPath($qualifyClass), $this->getNamespace($qualifyClass));
 
-        $this->makeDirectory($path);
+        $this->makeDirectory($modelClassDetails->getPath());
+
+        $modelExists = $this->filesystem->exists($modelClassDetails->getPath());
+
+        if (! $modelExists) {
+            $this->modelClassGenerator->generateModelClass($modelClassDetails);
+
+            $this->modelClassGenerator->writeChanges();
+        }
 
         $this->info("Model generated! Now let's add some fields!");
         $this->info('You can always add more fields later manually or by re-running this command.');

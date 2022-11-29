@@ -1,10 +1,10 @@
 <?php
 
-namespace ConsoleGenerator\ConsoleGenerator\Tests;
+namespace ConsoleGenerator\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use ConsoleGenerator\ConsoleGenerator\ConsoleGeneratorServiceProvider;
+use ConsoleGenerator\ConsoleGeneratorServiceProvider;
 
 class TestCase extends Orchestra
 {
