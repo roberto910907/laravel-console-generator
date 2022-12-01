@@ -2,8 +2,12 @@
     "name": "roberto910907/laravel-console-generator",
     "description": "Generates Laravel models and migrations using the command line",
     "keywords": [
-        "roberto910907",
         "laravel",
+        "laravel-model",
+        "laravel-package",
+        "laravel-generator",
+        "laravel-code-generator",
+        "laravel-model-generator",
         "laravel-console-generator"
     ],
     "homepage": "https://github.com/roberto910907/laravel-console-generator",
@@ -17,6 +21,7 @@
     ],
     "require": {
         "php": "^8.0",
+        "doctrine/dbal": "^3.5",
         "illuminate/console": "^9.41",
         "illuminate/contracts": "^9.0",
         "spatie/laravel-package-tools": "^1.13.0"
